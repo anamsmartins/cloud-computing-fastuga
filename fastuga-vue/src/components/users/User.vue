@@ -95,7 +95,9 @@ const socket = inject("socket")
     let newValueStr = dataAsString()
     if (originalValueStr != newValueStr) {
       nextCallBack = next
-      confirmationLeaveDialog.value.show()
+      if(confirmationLeaveDialog.value){
+        confirmationLeaveDialog.value.show()
+      }
     } else {
       next()
     }

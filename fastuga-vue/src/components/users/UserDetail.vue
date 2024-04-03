@@ -72,9 +72,6 @@ const save = async () => {
   formData.append('photo_url', photoInput.value);
   formData.append('_method', 'PUT');
   if (userStore.user.type == 'C') {
-    const customerV = customerValidations();
-    const paymentV = paymentReferenceValidations();
-
     formData.append('phone', phoneInput.value);
     formData.append('nif', nifInput.value);
     formData.append('default_payment_type', default_payment_typeInput.value);

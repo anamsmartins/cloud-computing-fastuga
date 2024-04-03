@@ -155,7 +155,7 @@ router.beforeEach((to, from, next) => {
     }
   }
 
-  if(to.name == 'NewOrder' || to.name == 'AddProduct'){
+  if(to.name == 'NewOrder'){
     if(userStore.user && userStore.user.type != 'C'){
       next({
         name: "Unauthorized"

@@ -17,17 +17,16 @@ use App\Http\Resources\UserResource;
 use Illuminate\Support\Facades\Hash;
 
 const PASSPORT_SERVER_URL = "http://localhost";
-const CLIENT_ID = 2;
-const CLIENT_SECRET = 'aGjjy4Ntmv1mnlBSNMFA3uValmOdTZFjkMgNaRGR';
 
 class AuthController extends Controller
 {
     private function passportAuthenticationData($username, $password)
     {
+        $client = DB::table("oauth_clients")->where("password_client", "=", 1)->first();
         return [
             'grant_type' => 'password',
-            'client_id' => CLIENT_ID,
-            'client_secret' => CLIENT_SECRET,
+            'client_id' => $client->id,
+            'client_secret' => $client->secret,
             'username' => $username,
             'password' => $password,
             'scope' => ''

@@ -74,7 +74,7 @@ class UserController extends Controller
 
     public function show(User $user)
     {
-        $this->view('view', $user);// middleware
+        // $this->view('view', $user);// middleware
         return new UserResource($user);
     }
 

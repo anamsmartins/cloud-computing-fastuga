@@ -1,3 +1,5 @@
 
-fastuga-laravel/app/Http/Controllers/api/AuthController.php
-fastuga-laravel/app/Http/Controllers/api/AuthController.php
+vendor/
+websocket_server/node_modules/
+fastuga-vue/node_modules/
+fastuga-laravel/vendor/

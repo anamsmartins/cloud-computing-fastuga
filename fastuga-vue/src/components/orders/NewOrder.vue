@@ -144,31 +144,31 @@ const confirmPayment = () => {
     value: finalPrice.value,
   };
 
-  axios
-    .post(`${PAYMENT_URL}/api/payments`, requestBody)
-    .then(() => {
-      axiosLaravel
-        .post("/orders", paymentBody)
-        .then((response) => {
-          ticketNumber.value = response.data.data.ticket_number;
-          orderCompletedDialog.value.show();
-        })
-        .catch((error) => {
-          toast.error(
-            "Order was not created due to " + error.response.data.message
-          );
-        });
+  // axios
+  //   .post(`${PAYMENT_URL}/api/payments`, requestBody)
+  //   .then(() => {
+  axiosLaravel
+    .post("/orders", paymentBody)
+    .then((response) => {
+      ticketNumber.value = response.data.data.ticket_number;
+      orderCompletedDialog.value.show();
     })
     .catch((error) => {
-      if (error.response.status == 422) {
-        toast.error(
-          "Order was not created due to validation errors - " +
-            error.response.data.message
-        );
-      } else {
-        toast.error("Order was not created due to unknown server error!");
-      }
+      toast.error(
+        "Order was not created due to " + error.response.data.message
+      );
     });
+    // })
+    // .catch((error) => {
+    //   if (error.response.status == 422) {
+    //     toast.error(
+    //       "Order was not created due to validation errors - " +
+    //         error.response.data.message
+    //     );
+    //   } else {
+    //     toast.error("Order was not created due to unknown server error!");
+    //   }
+    // });
 };
 
 const paymentReferenceValidations = () => {
