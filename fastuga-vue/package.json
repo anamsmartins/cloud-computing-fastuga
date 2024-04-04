@@ -4,6 +4,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build --mode production",
+    "start": "npm run dev -- --port 5174",
     "preview": "vite preview"
   },
   "dependencies": {

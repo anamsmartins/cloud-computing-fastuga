@@ -21,13 +21,16 @@ services:
       MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:-password}
     volumes:
       - fastuga_db_data:/var/lib/mysql
+    healthcheck:
+      test: "exit 0"
   api:
     build: ./fastuga-laravel
     container_name: fastuga-api
     ports:
       - "8081:8081"
     depends_on:
-      - database
+        database:
+          condition: service_healthy
     volumes:
       - fastuga_laravel_storage:/var/www/html/storage
 volumes:

@@ -17,7 +17,6 @@ RUN apt-get update && \
         pdo_mysql && \
     rm -rf /var/lib/apt/lists/*
 
-
 COPY . .
 
 # Update composer and install dependencies
@@ -28,8 +27,8 @@ RUN composer update -W
 # Install laravel passport
 RUN composer require laravel/passport
 
-# RUN chmod -R 777 /var/www/html/storage
-# RUN chown -R www-data:www-data /var/www/html
-
 EXPOSE 8081
-ENTRYPOINT ["php", "artisan", "serve", "--host=0.0.0.0", "--port=8081"]
+
+# Make the entrypoint script executable
+RUN chmod +x /var/www/html/entrypoint.sh
+ENTRYPOINT ["/var/www/html/entrypoint.sh"]

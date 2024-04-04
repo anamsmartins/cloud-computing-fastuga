@@ -1,11 +1,5 @@
 up:
 	docker-compose up -d
-data: 
-	docker exec fastuga-api bash -c "php artisan migrate"
-	docker exec fastuga-api bash -c "php artisan db:seed"
-	docker exec fastuga-api bash -c "php artisan storage:link"
-	docker exec fastuga-api bash -c "php artisan passport:install --force"
-
 down:
 	docker exec fastuga-api bash -c "php artisan cache:clear"
 	docker exec fastuga-api bash -c "php artisan config:clear"
