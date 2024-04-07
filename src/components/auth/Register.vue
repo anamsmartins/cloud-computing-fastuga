@@ -62,7 +62,7 @@ const register = async () => {
   formData.append("points", 0);
 
   await axios
-    .post(`http://localhost:8081/api/register`, formData)
+    .post(`https://cloud-computing-fastuga-api-2wau7ehjaq-uc.a.run.app/api/register`, formData)
     .then((response) => {
       registerBool.value = false;
       toast.success("Register Successful.");
