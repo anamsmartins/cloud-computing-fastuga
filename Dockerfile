@@ -36,6 +36,8 @@ RUN composer update -W
 # Install laravel passport
 RUN composer require laravel/passport
 
+RUN php artisan config:cache
+
 RUN php artisan serve --host=0.0.0.0 --port=8081 &
 
 RUN php artisan migrate
