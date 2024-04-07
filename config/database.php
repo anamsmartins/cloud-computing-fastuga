@@ -47,25 +47,12 @@ return [
 
         'mysql' => [
             'driver' => 'mysql',
-            'url' => env('DATABASE_URL', function () {
-                // Instantiate a Secret Manager client
-                $secretManagerServiceClient = new SecretManagerServiceClient();
-
-                // Specify the name of the secret to retrieve
-                $secretName = 'projects/cloud-computing-prj1-fastuga/secrets/DATABASE_URL/versions/1';
-
-                // Fetch the secret payload
-                $response = $secretManagerServiceClient->accessSecretVersion(['name' => $secretName]);
-                $payload = $response->getPayload()->getData();
-                $decodedPayload = base64_decode($payload);
-
-                return $decodedPayload;
-            }),
+            'url' => env('DATABASE_URL', "mysql://avnadmin:AVNS_wJI-RWsrZVEdi-4h6BJ@fastuga-database-cloud-computing-fastuga.a.aivencloud.com:17883/defaultdb?ssl-mode=REQUIRED"),
             'host' => env('DB_HOST', 'fastuga-database-cloud-computing-fastuga.a.aivencloud.com'),
             'port' => env('DB_PORT', '17883'),
             'database' => env('DB_DATABASE', 'defaultdb'),
             'username' => env('DB_USERNAME', 'avnadmin'),
-            'password' => env('DB_PASSWORD', 'AVNS_wJI-RWsrZVEdi-4h6BJ'),
+            'password' => env('DB_PASSWORD', "AVNS_wJI-RWsrZVEdi-4h6BJ"),
             'unix_socket' => env('DB_SOCKET', ''),
             'charset' => 'utf8mb4',
             'collation' => 'utf8mb4_unicode_ci',

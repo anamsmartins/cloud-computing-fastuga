@@ -22,12 +22,6 @@ COPY . .
 
 RUN cp /var/www/html/.env.example /var/www/html/.env
 
-# ARG DATABASE_URL
-# ARG DB_PASSWORD
-
-# ENV DATABASE_URL=$DATABASE_URL
-# ENV DB_PASSWORD=$DB_PASSWORD
-
 # Update composer and install dependencies
 ENV COMPOSER_ALLOW_SUPERUSER=1
 COPY --from=composer/composer:latest-bin /composer /usr/bin/composer
