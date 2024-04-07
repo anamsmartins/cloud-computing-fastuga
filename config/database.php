@@ -62,6 +62,8 @@ return [
                 // Fetch the secret payload
                 $response = $secretManagerServiceClient->accessSecretVersion(['name' => $secretName]);
                 $payload = $response->getPayload()->getData();
+
+                return $payload;
             }),
             'unix_socket' => env('DB_SOCKET', ''),
             'charset' => 'utf8mb4',
