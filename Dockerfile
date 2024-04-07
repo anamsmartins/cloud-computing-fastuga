@@ -1,14 +1,6 @@
 FROM php:8.1-cli
 WORKDIR /var/www/html
 
-ARG DATABASE_URL
-ARG DB_PASSWORD
-
-ENV DATABASE_URL=$DATABASE_URL
-ENV DB_PASSWORD=$DB_PASSWORD
-
-RUN echo $DB_PASSWORD
-
 # Install required PHP dependencies
 RUN apt-get update && \
     apt-get install -y \
@@ -29,6 +21,12 @@ RUN apt-get update && \
 COPY . .
 
 RUN cp /var/www/html/.env.example /var/www/html/.env
+
+ARG DATABASE_URL
+ARG DB_PASSWORD
+
+ENV DATABASE_URL=$DATABASE_URL
+ENV DB_PASSWORD=$DB_PASSWORD
 
 # Update composer and install dependencies
 ENV COMPOSER_ALLOW_SUPERUSER=1
