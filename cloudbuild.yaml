@@ -1,3 +1,12 @@
+steps:
+  - name: 'gcr.io/cloud-builders/docker'
+    id: build
+    entrypoint: 'bash'
+    args: 
+      - -c
+      - |
+          docker build -t us.gcr.io/cloud-computing-prj1-fastuga/cloud-computing-fastuga-api --build-arg DB_PASSWORD=$$DB_PASSWORD .
+    secretEnv: ['DB_PASSWORD']
 # steps:
 #   - name: 'gcr.io/cloud-builders/docker'
 #     args:
