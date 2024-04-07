@@ -45,12 +45,12 @@ return [
 
         'mysql' => [
             'driver' => 'mysql',
-            'url' => env('DATABASE_URL'),
-            'host' => env('DB_HOST', 'database'),
-            'port' => env('DB_PORT', '3306'),
-            'database' => env('DB_DATABASE', 'fastuga_db'),
-            'username' => env('DB_USERNAME', 'database_user'),
-            'password' => env('DB_PASSWORD', 'password'),
+            'url' => getenv('DATABASE_URL'),
+            'host' => env('DB_HOST', 'fastuga-database-cloud-computing-fastuga.a.aivencloud.com'),
+            'port' => env('DB_PORT', '17883'),
+            'database' => env('DB_DATABASE', 'defaultdb'),
+            'username' => env('DB_USERNAME', 'avnadmin'),
+            'password' => getenv('DB_PASSWORD'),
             'unix_socket' => env('DB_SOCKET', ''),
             'charset' => 'utf8mb4',
             'collation' => 'utf8mb4_unicode_ci',
