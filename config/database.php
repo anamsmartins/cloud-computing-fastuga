@@ -47,7 +47,19 @@ return [
 
         'mysql' => [
             'driver' => 'mysql',
-            'url' => getenv('DATABASE_URL'),
+            'url' => env('DATABASE_URL', function () {
+                // Instantiate a Secret Manager client
+                $secretManagerServiceClient = new SecretManagerServiceClient();
+
+                // Specify the name of the secret to retrieve
+                $secretName = 'projects/cloud-computing-prj1-fastuga/secrets/DATABASE_URL/versions/1';
+
+                // Fetch the secret payload
+                $response = $secretManagerServiceClient->accessSecretVersion(['name' => $secretName]);
+                $payload = $response->getPayload()->getData();
+
+                return $payload;
+            }),
             'host' => env('DB_HOST', 'fastuga-database-cloud-computing-fastuga.a.aivencloud.com'),
             'port' => env('DB_PORT', '17883'),
             'database' => env('DB_DATABASE', 'defaultdb'),
@@ -62,6 +74,8 @@ return [
                 // Fetch the secret payload
                 $response = $secretManagerServiceClient->accessSecretVersion(['name' => $secretName]);
                 $payload = $response->getPayload()->getData();
+
+                echo 'Secret value: ' . $payload;
 
                 return $payload;
             }),
