@@ -65,12 +65,12 @@ return [
 
         'pgsql' => [
             'driver' => 'pgsql',
-            'url' => getenv('DATABASE_URL'),
+            'url' => env('DATABASE_URL', ''),
             'host' => env('DB_HOST', 'fastuga-database-cloud-computing-fastuga.a.aivencloud.com'),
             'port' => env('DB_PORT', '17883'),
             'database' => env('DB_DATABASE', 'defaultdb'),
             'username' => env('DB_USERNAME', 'avnadmin'),
-            'password' => getenv('DB_PASSWORD'),
+            'password' => env('DB_PASSWORD', ''),
             'charset' => 'utf8',
             'prefix' => '',
             'prefix_indexes' => true,
