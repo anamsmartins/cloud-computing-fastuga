@@ -20,6 +20,8 @@ RUN apt-get update && \
 
 COPY . .
 
+RUN cp /var/www/html/.env.example /var/www/html/.env
+
 # Update composer and install dependencies
 ENV COMPOSER_ALLOW_SUPERUSER=1
 COPY --from=composer/composer:latest-bin /composer /usr/bin/composer
