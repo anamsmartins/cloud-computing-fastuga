@@ -1,21 +1,16 @@
 steps:
-- id: Build
-  name: 'gcr.io/cloud-builders/docker'
-  args:
-    - build
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      - 'build'
       - '-f=Dockerfile'
       - '.'
-      - '--set-env-vars'
-      # - '--build-arg'
+    env:
       - 'DATABASE_URL=$$DATABASE_URL'
-      -','
-      # - '--build-arg'
       - 'DB_PASSWORD=$$DB_PASSWORD'
-  secretEnv: ['DATABASE_URL', 'DB_PASSWORD']
+    secretEnv: ['DATABASE_URL', 'DB_PASSWORD']
 availableSecrets:
   secretManager:
-  - versionName: projects/758171085912/secrets/DATABASE_URL/versions/1
-    env: 'DATABASE_URL'
-  - versionName: projects/758171085912/secrets/DB_PASSWORD/versions/1
-    env: 'DB_PASSWORD'
-
+    - versionName: projects/758171085912/secrets/DATABASE_URL/versions/1
+      env: 'DATABASE_URL'
+    - versionName: projects/758171085912/secrets/DB_PASSWORD/versions/1
+      env: 'DB_PASSWORD'
