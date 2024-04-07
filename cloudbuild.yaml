@@ -8,9 +8,8 @@ steps:
       - '--set-env-vars'
       # - '--build-arg'
       - 'DATABASE_URL=$$DATABASE_URL'
-
+      -','
       # - '--build-arg'
-      - '--set-env-vars'
       - 'DB_PASSWORD=$$DB_PASSWORD'
   secretEnv: ['DATABASE_URL', 'DB_PASSWORD']
 availableSecrets:
