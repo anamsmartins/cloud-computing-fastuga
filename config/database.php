@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Str;
 
+use Google\Cloud\SecretManager\V1\SecretManagerServiceClient;
+
 return [
 
     /*
@@ -50,7 +52,17 @@ return [
             'port' => env('DB_PORT', '17883'),
             'database' => env('DB_DATABASE', 'defaultdb'),
             'username' => env('DB_USERNAME', 'avnadmin'),
-            'password' => getenv('DB_PASSWORD'),
+            'password' => env('DB_PASSWORD', function () {
+                // Instantiate a Secret Manager client
+                $secretManagerServiceClient = new SecretManagerServiceClient();
+
+                // Specify the name of the secret to retrieve
+                $secretName = 'projects/cloud-computing-prj1-fastuga/secrets/DB_PASSWORD/versions/1';
+
+                // Fetch the secret payload
+                $response = $secretManagerServiceClient->accessSecretVersion(['name' => $secretName]);
+                $payload = $response->getPayload()->getData();
+            }),
             'unix_socket' => env('DB_SOCKET', ''),
             'charset' => 'utf8mb4',
             'collation' => 'utf8mb4_unicode_ci',

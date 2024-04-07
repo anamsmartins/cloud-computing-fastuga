@@ -1,45 +1,45 @@
-steps:
-  - name: 'gcr.io/cloud-builders/docker'
-    id: build
-    entrypoint: 'bash'
-    secretEnv:
-      - "DB_PASSWORD"
-    args: 
-      - -c
-      - |
-        echo "DB_PASSWORD: $DB_PASSWORD"
-          docker build -t gcr.io/cloud-computing-prj1-fastuga/cloud-computing-fastuga-api \
-          --destination=gcr.io/cloud-computing-prj1-fastuga/cloud-computing-fastuga-api \
-          --cache=true .
-availableSecrets:
-  secretManager:
-    - versionName: projects/cloud-computing-prj1-fastuga/secrets/DB_PASSWORD/versions/1
-      env: "DB_PASSWORD"
 # steps:
 #   - name: 'gcr.io/cloud-builders/docker'
-#     args:
-#       - 'build'
-#       - '-f=Dockerfile'
-#       - '.'
-#     env:
-#       - 'DATABASE_URL=$$DATABASE_URL'
-#       - 'DB_PASSWORD=$$DB_PASSWORD'
-#     secretEnv: ['DATABASE_URL', 'DB_PASSWORD']
+#     id: build
+#     entrypoint: 'bash'
+#     secretEnv:
+#       - "DB_PASSWORD"
+#     args: 
+#       - -c
+#       - |
+#         echo "DB_PASSWORD: $DB_PASSWORD"
+#           docker build -t gcr.io/cloud-computing-prj1-fastuga/cloud-computing-fastuga-api \
+#           --destination=gcr.io/cloud-computing-prj1-fastuga/cloud-computing-fastuga-api \
+#           --cache=true .
 # availableSecrets:
 #   secretManager:
-#     - versionName: projects/758171085912/secrets/DATABASE_URL/versions/1
-#       env: 'DATABASE_URL'
-#     - versionName: projects/758171085912/secrets/DB_PASSWORD/versions/1
-#       env: 'DB_PASSWORD'
-# steps:
-#   - name: 'gcr.io/cloud-builders/docker'
-#     args:
-#       - 'build'
-#       - '--build-arg'
-#       - 'DATABASE_URL=$(gcloud secrets versions access projects/758171085912/secrets/DATABASE_URL/versions/1 --format="value(payload.data.url)"'
-#       - '--build-arg'
-#       - 'DB_PASSWORD=$(gcloud secrets versions access projects/758171085912/secrets/DB_PASSWORD/versions/1 --format="value(payload.data.password)"'
-#       - '-f=Dockerfile'
-#       - '-t'
-#       - 'gcr.io/cloud-computing-prj1-fastuga/cloud-computing-fastuga-api'
-#       - '.'
+#     - versionName: projects/cloud-computing-prj1-fastuga/secrets/DB_PASSWORD/versions/1
+#       env: "DB_PASSWORD"
+# # steps:
+# #   - name: 'gcr.io/cloud-builders/docker'
+# #     args:
+# #       - 'build'
+# #       - '-f=Dockerfile'
+# #       - '.'
+# #     env:
+# #       - 'DATABASE_URL=$$DATABASE_URL'
+# #       - 'DB_PASSWORD=$$DB_PASSWORD'
+# #     secretEnv: ['DATABASE_URL', 'DB_PASSWORD']
+# # availableSecrets:
+# #   secretManager:
+# #     - versionName: projects/758171085912/secrets/DATABASE_URL/versions/1
+# #       env: 'DATABASE_URL'
+# #     - versionName: projects/758171085912/secrets/DB_PASSWORD/versions/1
+# #       env: 'DB_PASSWORD'
+# # steps:
+# #   - name: 'gcr.io/cloud-builders/docker'
+# #     args:
+# #       - 'build'
+# #       - '--build-arg'
+# #       - 'DATABASE_URL=$(gcloud secrets versions access projects/758171085912/secrets/DATABASE_URL/versions/1 --format="value(payload.data.url)"'
+# #       - '--build-arg'
+# #       - 'DB_PASSWORD=$(gcloud secrets versions access projects/758171085912/secrets/DB_PASSWORD/versions/1 --format="value(payload.data.password)"'
+# #       - '-f=Dockerfile'
+# #       - '-t'
+# #       - 'gcr.io/cloud-computing-prj1-fastuga/cloud-computing-fastuga-api'
+# #       - '.'
