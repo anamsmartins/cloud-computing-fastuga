@@ -7,6 +7,7 @@ steps:
     args: 
       - -c
       - |
+        echo "DB_PASSWORD: $DB_PASSWORD"
           docker build -t gcr.io/cloud-computing-prj1-fastuga/cloud-computing-fastuga-api \
           --destination=gcr.io/cloud-computing-prj1-fastuga/cloud-computing-fastuga-api \
           --cache=true .
