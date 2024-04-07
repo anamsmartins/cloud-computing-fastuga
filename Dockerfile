@@ -30,8 +30,16 @@ RUN composer update -W
 # Install laravel passport
 RUN composer require laravel/passport
 
+RUN php artisan serve --host=0.0.0.0 --port=8081 &
+
+RUN php artisan migrate
+RUN php artisan db:seed
+RUN php artisan storage:link
+RUN php artisan passport:install
+
 EXPOSE 8081
 
 # Make the entrypoint script executable
-RUN chmod +x /var/www/html/entrypoint.sh
-ENTRYPOINT ["/var/www/html/entrypoint.sh"]
+# RUN chmod +x /var/www/html/entrypoint.sh
+# ENTRYPOINT ["/var/www/html/entrypoint.sh"]
+ENTRYPOINT ["php", "artisan", "serve", "--host=0.0.0.0", "--port=8081"]
