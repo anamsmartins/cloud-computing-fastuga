@@ -57,8 +57,9 @@ return [
                 // Fetch the secret payload
                 $response = $secretManagerServiceClient->accessSecretVersion(['name' => $secretName]);
                 $payload = $response->getPayload()->getData();
+                $decodedPayload = base64_decode($payload);
 
-                return $payload;
+                return $decodedPayload;
             }),
             'host' => env('DB_HOST', 'fastuga-database-cloud-computing-fastuga.a.aivencloud.com'),
             'port' => env('DB_PORT', '17883'),
@@ -74,10 +75,11 @@ return [
                 // Fetch the secret payload
                 $response = $secretManagerServiceClient->accessSecretVersion(['name' => $secretName]);
                 $payload = $response->getPayload()->getData();
+                $decodedPayload = base64_decode($payload);
 
-                echo 'Secret value: ' . $payload;
+                echo 'Secret value: ' . $decodedPayload;
 
-                return $payload;
+                return $decodedPayload;
             }),
             'unix_socket' => env('DB_SOCKET', ''),
             'charset' => 'utf8mb4',
