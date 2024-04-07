@@ -2,7 +2,7 @@ const httpServer = require("http").createServer();
 const io = require("socket.io")(httpServer, {
 	cors: {
 		// The origin is the same as the Vue app domain. Change if necessary
-		origin: "http://localhost:5174",
+		origin: "https://cloud-computing-fastuga-frontend-2wau7ehjaq-uc.a.run.app/menu",
 		methods: ["GET", "POST"],
 		credentials: true,
 	},
