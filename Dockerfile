@@ -28,15 +28,6 @@ RUN composer update -W
 # Install laravel passport
 RUN composer require laravel/passport
 
-# Download and install Cloud SQL Proxy
-RUN curl -o /var/www/html/cloud_sql_proxy https://dl.google.com/cloudsql/cloud_sql_proxy.linux.amd64 && \
-    chmod +x /var/www/html/cloud_sql_proxy
-
-# Set the GOOGLE_APPLICATION_CREDENTIALS environment variable to point to the service account key file
-ENV GOOGLE_APPLICATION_CREDENTIALS="/var/www/html/cloud-computing-prj1-fastuga-dbee5723dca7.json"
-
-# RUN /var/www/html/cloud_sql_proxy -instances=cloud-computing-prj1-fastuga:us-central1:fastuga-database=tcp:3306 &
-
 EXPOSE 8081
 
 # Make the entrypoint script executable
