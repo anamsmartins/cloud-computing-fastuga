@@ -54,7 +54,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://localhost'),
+    'url' => env('APP_URL', 'https://cloud-computing-fastuga-api-2wau7ehjaq-uc.a.run.app'),
 
     'asset_url' => env('ASSET_URL'),
 

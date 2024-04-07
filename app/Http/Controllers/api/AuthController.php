@@ -16,7 +16,7 @@ use App\Http\Resources\UserResource;
 
 use Illuminate\Support\Facades\Hash;
 
-const PASSPORT_SERVER_URL = "http://localhost";
+const PASSPORT_SERVER_URL = "https://cloud-computing-fastuga-api-2wau7ehjaq-uc.a.run.app";
 
 class AuthController extends Controller
 {
