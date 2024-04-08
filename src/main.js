@@ -2,7 +2,6 @@ import { createApp } from "vue";
 import { createPinia } from "pinia";
 import { io } from "socket.io-client";
 import axios from "axios";
-import https from 'https';
 import Toaster from "@meforma/vue-toaster";
 import FieldErrorMessage from "./components/global/FieldErrorMessage.vue";
 import ConfirmationDialog from "./components/global/ConfirmationDialog.vue";
@@ -23,6 +22,8 @@ const wsConnection = import.meta.env.VITE_WS_CONNECTION
 
 app.provide('serverUrl',`${apiDomain}/api`)
 app.provide('socket',io(wsConnection))
+
+const https  = require('https');
 
 const serverBaseUrl = `${apiDomain}`;
 app.provide(
