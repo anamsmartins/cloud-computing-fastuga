@@ -10,7 +10,6 @@ export default defineConfig({
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)),
       stream: 'stream-browserify',
-      https: 'agent-base', 
     }
   },
   server: {
