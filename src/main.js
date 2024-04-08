@@ -2,6 +2,7 @@ import { createApp } from "vue";
 import { createPinia } from "pinia";
 import { io } from "socket.io-client";
 import axios from "axios";
+import https from 'https';
 import Toaster from "@meforma/vue-toaster";
 import FieldErrorMessage from "./components/global/FieldErrorMessage.vue";
 import ConfirmationDialog from "./components/global/ConfirmationDialog.vue";
@@ -31,6 +32,9 @@ app.provide(
     headers: {
       "Content-type": "application/json",
     },
+    httpsAgent: new https.Agent({
+      rejectUnauthorized: false
+    })
   })
 );
 app.provide("serverBaseUrl", serverBaseUrl);
