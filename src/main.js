@@ -23,6 +23,8 @@ const wsConnection = import.meta.env.VITE_WS_CONNECTION
 app.provide('serverUrl',`${apiDomain}/api`)
 app.provide('socket',io(wsConnection))
 
+axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
+
 const serverBaseUrl = `${apiDomain}`;
 app.provide(
   "axios",
