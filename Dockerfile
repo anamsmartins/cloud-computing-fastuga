@@ -2,7 +2,7 @@ FROM node:latest
 WORKDIR /usr/src/app
 
 COPY package*.json ./
-RUN npm -i stream-browserify agent-base
+RUN npm install agent-base
 RUN npm install
 
 COPY . .
