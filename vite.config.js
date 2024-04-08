@@ -17,5 +17,11 @@ export default defineConfig({
      watch: {
        usePolling: true
      }
-  }
+  },
+  resolve: {
+    alias: {
+      stream: 'stream-browserify',
+      https: 'agent-base', 
+    },
+  },
 })
