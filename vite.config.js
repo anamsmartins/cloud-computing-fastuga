@@ -9,7 +9,11 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)),
+      process: 'process/browser',
       stream: 'stream-browserify',
+      util: 'util',
+      https: 'agent-base',
+      zlib: 'browserify-zlib',
     }
   },
   server: {

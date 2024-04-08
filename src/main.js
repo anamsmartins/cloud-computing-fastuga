@@ -23,8 +23,6 @@ const wsConnection = import.meta.env.VITE_WS_CONNECTION
 app.provide('serverUrl',`${apiDomain}/api`)
 app.provide('socket',io(wsConnection))
 
-const https  = require('https');
-
 const serverBaseUrl = `${apiDomain}`;
 app.provide(
   "axios",
@@ -33,9 +31,6 @@ app.provide(
     headers: {
       "Content-type": "application/json",
     },
-    httpsAgent: new https.Agent({
-      rejectUnauthorized: false
-    })
   })
 );
 app.provide("serverBaseUrl", serverBaseUrl);
