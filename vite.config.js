@@ -8,7 +8,9 @@ export default defineConfig({
   plugins: [vue()],
   resolve: {
     alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url))
+      '@': fileURLToPath(new URL('./src', import.meta.url)),
+      stream: 'stream-browserify',
+      https: 'agent-base', 
     }
   },
   server: {
@@ -17,11 +19,5 @@ export default defineConfig({
      watch: {
        usePolling: true
      }
-  },
-  resolve: {
-    alias: {
-      stream: 'stream-browserify',
-      https: 'agent-base', 
-    },
   },
 })
